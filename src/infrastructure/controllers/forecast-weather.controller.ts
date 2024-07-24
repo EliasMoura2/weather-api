@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { ForecastWeatherFinderUseCase } from "../../application/forecast-weather-finder.usecase";
-import { IForecastWeatherFinderUseCase } from "../../domain";
+import { IForecastWeatherFinderUseCase, StatusCodes } from "../../domain";
 
 @injectable()
 export class ForecastWeathercontroller {
@@ -18,7 +18,7 @@ export class ForecastWeathercontroller {
       const forecastWeather = await this.useCase.find(city);
 
       req.log.debug({ forecastWeather }, "Forecast weather found");
-      return res.status(200).json({ forecastWeather });
+      return res.status(StatusCodes.OK).json({ forecastWeather });
     } catch (error) {
       next(error);
     }

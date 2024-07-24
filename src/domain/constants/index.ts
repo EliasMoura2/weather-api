@@ -1,2 +1,2 @@
 export * from "./dependencies.symbol";
-export * from "./status.constant";
+export * from "./status-codes.constant";

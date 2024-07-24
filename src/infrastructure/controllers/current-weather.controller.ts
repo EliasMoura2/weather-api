@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { CurrentWeatherFinderUseCase } from "../../application/current-weather-finder.usecase";
-import { ICurrentWeatherFinderUseCase } from "../../domain";
+import { ICurrentWeatherFinderUseCase, StatusCodes } from "../../domain";
 
 @injectable()
 export class CurrentWeathercontroller {
@@ -18,7 +18,7 @@ export class CurrentWeathercontroller {
       const weather = await this.currentWeatherFinderUsecase.find(city);
 
       req.log.debug({ weather }, "Current weather found");
-      return res.status(200).json({ weather });
+      return res.status(StatusCodes.OK).json({ weather });
     } catch (error) {
       next(error);
     }
