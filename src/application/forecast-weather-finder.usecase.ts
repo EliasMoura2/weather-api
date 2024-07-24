@@ -1,21 +1,26 @@
 import { inject, injectable } from "tsyringe";
 import { LocationFinderService } from "../infrastructure/services/location-finder.service";
 import { ForecastWeatherFinderService } from "../infrastructure/services/forecast-weather-finder.service";
-import { IForecastWeatherFinderService } from "../domain/services/forecast-weather-finder.service";
-import { ForecastWeatherMapper } from "../domain/mappers/forecast-weather.mapper";
-import { ForecastWeatherEntity, IForecastWeatherFinderUseCase } from "../domain";
+import {
+  ForecastWeatherEntity,
+  ForecastWeatherMapper,
+  IForecastWeatherFinderService,
+  IForecastWeatherFinderUseCase,
+  ILocationFinderService,
+} from "../domain";
 
 @injectable()
-export class ForecastWeatherFinderUseCase implements IForecastWeatherFinderUseCase{
+export class ForecastWeatherFinderUseCase
+  implements IForecastWeatherFinderUseCase
+{
   constructor(
     @inject(LocationFinderService)
-    private readonly locationFinderService: LocationFinderService,
+    private readonly locationFinderService: ILocationFinderService,
     @inject(ForecastWeatherFinderService)
     private readonly forecastWeatherFinderService: IForecastWeatherFinderService,
     @inject(ForecastWeatherMapper)
     private readonly forecastWeatherMapper: ForecastWeatherMapper
-  )
-  {}
+  ) {}
 
   async find(city: string): Promise<ForecastWeatherEntity> {
     if (!city) {

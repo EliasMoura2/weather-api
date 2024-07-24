@@ -1,5 +1,10 @@
 import { inject, injectable } from "tsyringe";
-import { ILocationFinderService, ILocationFinderUseCase, LocationEntity, LocationMapper } from "../domain";
+import {
+  ILocationFinderService,
+  ILocationFinderUseCase,
+  LocationEntity,
+  LocationMapper,
+} from "../domain";
 import { LocationFinderService } from "../infrastructure";
 
 @injectable()
