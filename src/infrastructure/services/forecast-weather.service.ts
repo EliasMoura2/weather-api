@@ -1,10 +1,10 @@
 import { injectable } from "tsyringe";
 import { envs } from "../../config";
 import { HttpClientAdapter } from "../adapters";
-import { IForecastWeatherFinderService } from "../../domain";
+import { IForecastWeatherService } from "../../domain";
 
 @injectable()
-export class ForecastWeatherFinderService implements IForecastWeatherFinderService {
+export class ForecastWeatherService implements IForecastWeatherService {
 
   async find(city: string) {
     const baseUrl = "https://api.openweathermap.org/data/2.5/forecast";

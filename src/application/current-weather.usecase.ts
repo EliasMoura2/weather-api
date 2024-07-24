@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { CURRENT_WEATHER_MAPPER } from "../domain/constants/dependencies.symbol";
 import {
+  CURRENT_WEATHER_MAPPER,
   CURRENT_WEATHER_SERVICE,
   CurrentWeatherEntity,
   CurrentWeatherMapper,

@@ -1,6 +1,15 @@
 import { container } from "tsyringe";
 import {
+  CURRENT_WEATHER_CONTROLLER,
+  CURRENT_WEATHER_MAPPER,
+  CURRENT_WEATHER_SERVICE,
+  CURRENT_WEATHER_USECASE,
   CurrentWeatherMapper,
+  FORECAST_WEATHER_CONTROLLER,
+  FORECAST_WEATHER_MAPPER,
+  FORECAST_WEATHER_SERVICE,
+  FORECAST_WEATHER_USECASE,
+  ForecastWeatherMapper,
   LOCATION_FINDER_CONTROLLER,
   LOCATION_FINDER_SERVICE,
   LOCATION_FINDER_USECASE,
@@ -14,17 +23,12 @@ import {
 } from "../controllers";
 import {
   CurrentWeatherService,
+  ForecastWeatherService,
   LocationFinderService,
 } from "../services";
 import {
-  CURRENT_WEATHER_CONTROLLER,
-  CURRENT_WEATHER_SERVICE,
-  CURRENT_WEATHER_MAPPER,
-  CURRENT_WEATHER_USECASE,
-  FORECAST_WEATHER_CONTROLLER,
-} from "../../domain/constants/dependencies.symbol";
-import {
   CurrentWeatherUseCase,
+  ForecastWeatherUseCase,
   LocationFinderUseCase,
 } from "../../application";
 
@@ -63,5 +67,17 @@ container.register(CURRENT_WEATHER_MAPPER, {
 container.register(FORECAST_WEATHER_CONTROLLER, {
   useClass: ForecastWeatherController,
 });
+
+container.register(FORECAST_WEATHER_USECASE, {
+  useClass: ForecastWeatherUseCase,
+});
+
+container.register(FORECAST_WEATHER_SERVICE, {
+  useClass: ForecastWeatherService,
+});
+
+container.register(FORECAST_WEATHER_MAPPER, {
+  useClass: ForecastWeatherMapper,
+})
 
 export default container;

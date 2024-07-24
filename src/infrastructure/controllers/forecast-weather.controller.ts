@@ -1,13 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
-import { ForecastWeatherFinderUseCase } from "../../application/forecast-weather-finder.usecase";
-import { IForecastWeatherFinderUseCase, StatusCodes } from "../../domain";
+import {
+  FORECAST_WEATHER_USECASE,
+  IForecastWeatherUseCase,
+  StatusCodes,
+} from "../../domain";
 
 @injectable()
 export class ForecastWeatherController {
   constructor(
-    @inject(ForecastWeatherFinderUseCase)
-    private readonly useCase: IForecastWeatherFinderUseCase
+    @inject(FORECAST_WEATHER_USECASE)
+    private readonly useCase: IForecastWeatherUseCase
   ) {}
 
   find = async (req: Request, res: Response, next: NextFunction) => {
