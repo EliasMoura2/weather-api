@@ -1,13 +1,10 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { IHttpClientAdapter } from "../../domain/adapters/http-client.adapter";
-import { injectable } from "tsyringe";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+// import { IHttpClientAdapter } from "../../domain/adapters/http-client.adapter";
 
-@injectable()
-export class HttpClientAdapter implements IHttpClientAdapter {
-  private readonly axios: AxiosInstance = axios;
+export class HttpClientAdapter {
 
-  async get(url: string, options?: AxiosRequestConfig): Promise<AxiosResponse> {
-    return await this.axios.get(url, options);
+  static async get(url: string, options?: AxiosRequestConfig): Promise<AxiosResponse> {
+    return await axios.get(url, options);
   }
   // post
   // patch
