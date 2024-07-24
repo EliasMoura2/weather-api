@@ -1,52 +1,32 @@
-import express, { Router } from "express";
+import "reflect-metadata";
+import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 import swaggerUI from "swagger-ui-express";
-import OpenApiConfig from "./shared/docs/swagger";
+import OpenApiConfig from "./docs/swagger";
+import { AppRoutes } from "./routes";
+import { errorHandler } from "./infrastructure";
 
-interface Options {
-  port?: number;
-  routes: Router;
-}
+const server = express();
 
-export class Server {
-  public readonly app = express();
-  private serverListener?: any;
-  private readonly port: number;
-  private readonly routes: Router;
+// Middlewares
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+server.use(cors());
+server.use(helmet());
+server.use(compression());
+process.env.NODE_ENV !== "prod"
+  ? server.use(morgan("dev"))
+  : server.use(morgan("tiny"));
 
-  constructor(options: Options) {
-    const { port = 4000, routes } = options;
+// Docs
+server.use("/docs", swaggerUI.serve, swaggerUI.setup(OpenApiConfig));
 
-    this.port = port;
-    this.routes = routes;
-  }
+// Routes
+server.use("/api/v1", AppRoutes.routes);
 
-  async start() {
-    // Middlewares
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(cors());
-    this.app.use(helmet());
-    this.app.use(compression());
+server.use(errorHandler);
 
-    process.env.NODE_ENV !== "prod"
-      ? this.app.use(morgan("dev"))
-      : this.app.use(morgan("tiny"));
-
-    // Routes
-    this.app.use("/api/v1", this.routes);
-    this.app.use("/docs", swaggerUI.serve, swaggerUI.setup(OpenApiConfig));
-
-    // Start server
-    this.serverListener = this.app.listen(this.port, () =>
-      console.log(`Server running on port ${this.port}`)
-    );
-  }
-
-  public close() {
-    this.serverListener?.close();
-  }
-}
+export default server;

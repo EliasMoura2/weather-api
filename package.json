@@ -2,11 +2,11 @@
   "name": "weather-api",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn src/app.ts",
+    "dev": "tsnd --respawn src/index.ts",
     "build": "rimraf dist/ && tsc",
-    "start": "pnpm run build && node dist/app.js",
+    "start": "pnpm run build && node dist/index.js",
     "test": "jest",
     "test:watch": "jest --watch --forceExit --passWithNoTests",
     "coverage": "jest --coverage"
