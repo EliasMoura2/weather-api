@@ -1,6 +1,5 @@
 import { injectable } from "tsyringe";
 import { HttpClientAdapter } from "../adapters";
-// import { IHttpClientAdapter } from "../../domain/adapters/http-client.adapter";
 import { ILocationFinderService } from "../../domain";
 
 @injectable()
