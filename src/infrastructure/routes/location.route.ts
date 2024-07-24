@@ -1,13 +1,14 @@
 import { Router } from "express";
-import { container } from "tsyringe";
-import { LocationFinderController } from "../controllers/location.controller";
+import { LOCATION_FINDER_CONTROLLER } from "../../domain";
+import { LocationFinderController } from "../controllers";
+import container from "../../infrastructure/dependencies/container";
 
 export class LocationRoutes {
   static get routes(): Router {
     const router = Router();
 
-    const locationFinderController = container.resolve(
-      LocationFinderController
+    const locationFinderController: LocationFinderController = container.resolve(
+      LOCATION_FINDER_CONTROLLER
     );
 
     /**

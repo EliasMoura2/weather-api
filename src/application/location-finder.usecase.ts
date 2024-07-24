@@ -2,17 +2,18 @@ import { inject, injectable } from "tsyringe";
 import {
   ILocationFinderService,
   ILocationFinderUseCase,
+  LOCATION_FINDER_SERVICE,
+  LOCATION_MAPPER,
   LocationEntity,
   LocationMapper,
 } from "../domain";
-import { LocationFinderService } from "../infrastructure";
 
 @injectable()
 export class LocationFinderUseCase implements ILocationFinderUseCase {
   constructor(
-    @inject(LocationFinderService)
+    @inject(LOCATION_FINDER_SERVICE)
     private readonly locationFinderService: ILocationFinderService,
-    @inject(LocationMapper)
+    @inject(LOCATION_MAPPER)
     private readonly locationMapper: LocationMapper
   ) {}
 

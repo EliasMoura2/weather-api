@@ -1,12 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
-import { LocationFinderUseCase } from "../../application/location-finder.usecase";
-import { ILocationFinderUseCase, StatusCodes } from "../../domain";
+import {
+  ILocationFinderUseCase,
+  LOCATION_FINDER_USECASE,
+  StatusCodes,
+} from "../../domain";
 
 @injectable()
 export class LocationFinderController {
   constructor(
-    @inject(LocationFinderUseCase)
+    @inject(LOCATION_FINDER_USECASE)
     private readonly useCase: ILocationFinderUseCase
   ) {}
 
