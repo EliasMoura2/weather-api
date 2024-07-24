@@ -5,6 +5,10 @@
 ```
 git clone https://github.com/EliasMoura2/weather-api.git
 ```
+1.1 **Ingresar al directorio clonado**
+```
+  cd weather-api
+```
 2. **crear un archivo .env y guardar las siguiente variables de entorno**
   *En caso de no tener las variables de entorno lanzara un error al iniciar el servidor*
   ```
