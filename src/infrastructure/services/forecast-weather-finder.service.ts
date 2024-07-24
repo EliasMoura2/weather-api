@@ -1,0 +1,29 @@
+import { inject, injectable } from "tsyringe";
+import { HttpClientAdapter } from "../adapters";
+import { envs } from "../../config";
+import { IForecastWeatherFinderService } from "../../domain/services/forecast-weather-finder.service";
+
+@injectable()
+export class ForecastWeatherFinderService implements IForecastWeatherFinderService {
+  private readonly baseUrl: string;
+  private readonly appId: string;
+
+  constructor(
+    @inject(HttpClientAdapter)
+    private readonly httpClient: HttpClientAdapter
+  ) {
+    this.baseUrl = "https://api.openweathermap.org/data/2.5/forecast";
+    this.appId = envs.OPEN_WEATHER_APPID;
+  }
+
+  async find(city: string) {
+    const url = `${this.baseUrl}?q=${city}&appid=${this.appId}&units=metric`;
+
+    return await this.httpClient.get(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      timeout: 5000,
+    });
+  }
+}
