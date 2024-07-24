@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
-import { HttpClientAdapter } from "../adapters";
 import { envs } from "../../config";
-import { ICurrentWeatherFinderService } from "../../domain/services/current-weather-finder.service";
+import { HttpClientAdapter } from "../adapters";
+import { ICurrentWeatherFinderService } from "../../domain";
 
 @injectable()
 export class CurrentWeatherFinderService implements ICurrentWeatherFinderService {
