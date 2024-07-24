@@ -4,7 +4,7 @@ import { ForecastWeatherFinderUseCase } from "../../application/forecast-weather
 import { IForecastWeatherFinderUseCase, StatusCodes } from "../../domain";
 
 @injectable()
-export class ForecastWeathercontroller {
+export class ForecastWeatherController {
   constructor(
     @inject(ForecastWeatherFinderUseCase)
     private readonly useCase: IForecastWeatherFinderUseCase

@@ -1,10 +1,10 @@
 import { injectable } from "tsyringe";
 import { envs } from "../../config";
 import { HttpClientAdapter } from "../adapters";
-import { ICurrentWeatherFinderService } from "../../domain";
+import { ICurrentWeatherService } from "../../domain";
 
 @injectable()
-export class CurrentWeatherFinderService implements ICurrentWeatherFinderService {
+export class CurrentWeatherService implements ICurrentWeatherService {
   async find(city: string) {
     const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
     const appId = envs.OPEN_WEATHER_APPID;

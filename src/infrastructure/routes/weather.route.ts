@@ -1,19 +1,23 @@
 import { Router } from "express";
-import { container } from "tsyringe";
-
-import { CurrentWeathercontroller } from "../controllers/current-weather.controller";
-import { ForecastWeathercontroller } from "../controllers/forecast-weather.controller";
+import {
+  CURRENT_WEATHER_CONTROLLER,
+  FORECAST_WEATHER_CONTROLLER,
+} from "../../domain";
+import container from "../../infrastructure/dependencies/container";
+import {
+  CurrentWeatherController,
+  ForecastWeatherController,
+} from "../controllers";
 
 export class WeatherRoutes {
   static get routes(): Router {
     const router = Router();
 
-    const currentWeatherController = container.resolve(
-      CurrentWeathercontroller
-    );
-    const forecastWeatherController = container.resolve(
-      ForecastWeathercontroller
-    );
+    const currentWeatherController: CurrentWeatherController =
+      container.resolve(CURRENT_WEATHER_CONTROLLER);
+
+    const forecastWeatherController: ForecastWeatherController =
+      container.resolve(FORECAST_WEATHER_CONTROLLER);
 
     /**
      * @openapi
@@ -66,7 +70,6 @@ export class WeatherRoutes {
      *              properties:
      *                forecastWeather:
      *                  $ref: '#/components/schemas/ForecastWeather'
-     *                    
      */
     router.get("/forecast", forecastWeatherController.find);
 

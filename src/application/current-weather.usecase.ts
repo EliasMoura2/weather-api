@@ -1,24 +1,23 @@
 import { inject, injectable } from "tsyringe";
-import { CurrentWeatherFinderService } from "../infrastructure/services/current-weather-finder.service";
-import { LocationFinderService } from "../infrastructure/services/location-finder.service";
+import { CURRENT_WEATHER_MAPPER } from "../domain/constants/dependencies.symbol";
 import {
+  CURRENT_WEATHER_SERVICE,
   CurrentWeatherEntity,
   CurrentWeatherMapper,
-  ICurrentWeatherFinderService,
-  ICurrentWeatherFinderUseCase,
+  ICurrentWeatherService,
+  ICurrentWeatherUseCase,
   ILocationFinderService,
+  LOCATION_FINDER_SERVICE,
 } from "../domain";
 
 @injectable()
-export class CurrentWeatherFinderUseCase
-  implements ICurrentWeatherFinderUseCase
-{
+export class CurrentWeatherUseCase implements ICurrentWeatherUseCase {
   constructor(
-    @inject(LocationFinderService)
+    @inject(LOCATION_FINDER_SERVICE)
     private readonly locationFinderService: ILocationFinderService,
-    @inject(CurrentWeatherFinderService)
-    private readonly currentWeatherFinderService: ICurrentWeatherFinderService,
-    @inject(CurrentWeatherMapper)
+    @inject(CURRENT_WEATHER_SERVICE)
+    private readonly currentWeatherFinderService: ICurrentWeatherService,
+    @inject(CURRENT_WEATHER_MAPPER)
     private readonly currentWeatherMapper: CurrentWeatherMapper
   ) {}
 
