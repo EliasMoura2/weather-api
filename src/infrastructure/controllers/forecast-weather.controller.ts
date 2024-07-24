@@ -12,10 +12,12 @@ export class ForecastWeathercontroller {
 
   find = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      req.log.info("Getting forecast weather");
       const city = req.query.city as string;
 
       const forecastWeather = await this.useCase.find(city);
 
+      req.log.debug({ forecastWeather }, "Forecast weather found");
       return res.status(200).json({ forecastWeather });
     } catch (error) {
       next(error);
