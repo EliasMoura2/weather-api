@@ -51,3 +51,90 @@ git clone https://github.com/EliasMoura2/weather-api.git
 > 3. `pnpm test` para correr los tests
 > 4. `pnpm test:watch` para correr los tests en modo watch
 > 4. `pnpm test:coverage` para generar el coverage de los tests
+
+---
+## Documentación endpoints
+
+1. `GET /api/v1/location`: Endpoint para obtener lo datos de ubicacion.<br><br>
+    cURL:
+    ```
+      curl --location 'localhost:3000/api/v1/location'
+    ```
+    response:
+    ```
+      {
+        "location": {
+          "city": "Montreal",
+          "country": "Canada",
+          "countryCode": "CA",
+          "lat": 45.6085,
+          "lon": -73.5493,
+          "state": "Quebec",
+          "zip": "H1K"
+        }
+      }
+    ```
+
+2. `GET /api/v1/weathers/current?city={city}`: Endpoint para obtener el clima actual de una ciudad.<br><br>
+  El dato city no es requerido por lo que peude ser enviado o no.<br>
+  En caso de omitir enviar el dato city, se obtendra el clima de la ciudad que se obtiene de ip-api.<br><br>
+    cURL:
+    ```
+      curl --location 'localhost:3000/api/v1/weathers/current?city=Montreal'
+    ```
+    response:
+    ```
+      {
+        "weather": {
+          "city": "Montreal",
+          "countryCode": "CA",
+          "description": "overcast clouds",
+          "humidity": 69,
+          "pressure": 1015,
+          "temperature": 25.86,
+          "tempMax": 26.9,
+          "tempMin": 25.01,
+          "windSpeed": 5.66
+        }
+     }
+    ```
+
+3. `GET /api/v1/weathers/forecast?city={city}`: Endpoint para obtener el pronoostico del clima de una ciudad.<br><br>
+  El dato city no es requerido por lo que peude ser enviado o no.<br>
+  En caso de omitir enviar el dato city, se obtendra el clima de la ciudad que se obtiene de ip-api.<br><br>
+    cURL:
+    ```
+      curl --location 'localhost:3000/api/v1/weathers/forecast?city=Montreal'
+    ```
+    response:
+    ```
+      {
+        "forecastWeather": {
+          "city": "Montreal",
+          "countryCode": "CA",
+          "weathers": [
+            {
+              "date": "2024-07-24 21:00:00",
+              "description": "light rain",
+              "humidity": 72,
+              "pressure": 1014,
+              "temperature": 25.63,
+              "tempMax": 25.63,
+              "tempMin": 23.6,
+              "windSpeed": 3.41
+            },
+            {
+              "date": "2024-07-25 00:00:00",
+              "description": "moderate rain",
+              "humidity": 78,
+              "pressure": 1014,
+              "temperature": 24.27,
+              "tempMax": 24.27,
+              "tempMin": 21.56,
+              "windSpeed": 2.93
+            },
+            ...
+          ]
+        }
+      }
+    ```
