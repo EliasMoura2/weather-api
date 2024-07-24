@@ -1,32 +1,43 @@
 ## Weaather API
 
 ### Pasos para ejecutar el proyecto
-1. **clonar el repositorio**
+1. **Copiar el link para clonar el repositorio**
 ```
 git clone https://github.com/EliasMoura2/weather-api.git
 ```
-1.1 **Ingresar al directorio clonado**
+2. **Abrir una terminal, pegar el link copiado y presionar enter**
+
+3. **Ingresar al directorio clonado**
 ```
   cd weather-api
 ```
-2. **crear un archivo .env y guardar las siguiente variables de entorno**
-  *En caso de no tener las variables de entorno lanzara un error al iniciar el servidor*
+
+4. **Abrir visual studio code**
+```
+  code .
+```
+
+5. **crear un archivo .env y guardar las siguiente variables de entorno**
+  - *En caso de no tener las variables de entorno se lanzará un error al iniciar el servidor*
   ```
     PORT=3000
     NODE_ENV=dev
     OPEN_WEATHER_APPID=852700f42b4616253453603d6a3ddbed
   ```
+  > Nota: el APPID de open weather no estará disponible por mucho tiempo.
 
-3. **ejecutar el comando `nvm use` para cambiar la version de node**
+5. **ejecutar el comando `nvm use` para cambiar la version de node**
   > Nota: Deberiamos tener instalado el paquete [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
-4. **En caso de no tener instalada la version ejeutar el comando `nvm install lts/hydrogen`**
-5. **Instalar el paquete [pnpm](https://pnpm.io/installation)**
+
+  - **Una vez instalado nvm o en caso de no tener instalada la version requerida ejecutar el comando `nvm install lts/hydrogen`**
+
+6. **Instalar el paquete [pnpm](https://pnpm.io/installation)**
 ```
   npm install -g pnpm
 ```
-5. **ejecutar el comando `pnpm i` para instalar las dependencias**
-6. **ejecutar el comando `pnpm dev` para iniciar el servidor en modo desarrollo**
-7. **Probar los endpoints**
+7. **ejecutar el comando `pnpm i` para instalar las dependencias**
+8. **ejecutar el comando `pnpm dev` para iniciar el servidor en modo desarrollo**
+9. **Probar los endpoints**
   > Podemos probar los endpoints ingresando a la url: [http://localhost:3000/docs](http://localhost:3000/docs)
 
 ## Endpoints
