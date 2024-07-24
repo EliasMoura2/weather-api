@@ -42,8 +42,8 @@ git clone https://github.com/EliasMoura2/weather-api.git
 
 ## Endpoints
   - /api/v1/location
-  - /api/weathers/current
-  - /api/weathers/forecast
+  - /api/v1/weathers/current
+  - /api/v1/weathers/forecast
 
 ### Otros scripts
 > 1. `pnpm build` para compilar el proyecto
