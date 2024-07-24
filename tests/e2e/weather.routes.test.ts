@@ -2,14 +2,6 @@ import request from "supertest";
 import server from "../../src/server";
 
 describe("Weather Routes", () => {
-  // beforeAll(async () => {
-  //   await testServer.start()
-  // })
-
-  // afterAll(() => {
-  //   testServer.close()
-  // })
-
   describe("GET /api/v1/weather/current", () => {
     it("should return statusCode 200", async () => {
       await request(server)
