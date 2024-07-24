@@ -22,6 +22,13 @@ export class WeatherRoutes {
      *    summary: Get current weather
      *    description: Get current weather
      *    tags: [ weather ]
+     *    parameters:
+     *      - in: query
+     *        name: city
+     *        required: false
+     *        schema:
+     *          type: string
+     *          example: Buenos Aires
      *    responses:
      *      200:
      *        description: Get weather
@@ -42,6 +49,13 @@ export class WeatherRoutes {
      *    summary: Get forecast weather
      *    description: Get weather for 5 days
      *    tags: [ weather ]
+     *    parameters:
+     *      - in: query
+     *        name: city
+     *        required: false
+     *        schema:
+     *          type: string
+     *          example: Buenos Aires
      *    responses:
      *      200:
      *        description: Get forecast weather
