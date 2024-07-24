@@ -1,4 +1,4 @@
-## Weaather API
+## Weather API
 
 ### Pasos para ejecutar el proyecto
 1. **Copiar el link para clonar el repositorio**
