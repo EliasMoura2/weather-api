@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { CurrentWeatherFinderService } from "../infrastructure/services/current-weather-finder.service";
 import { CurrentWeatherMapper } from "../domain/mappers/current-weather.mapper";
 import { LocationFinderService } from "../infrastructure/services/location-finder.service";
-import { ICurrentWeatherFinderUseCase } from "../domain/use-cases/current-weather-finder.usecase";
+import { CurrentWeatherEntity, ICurrentWeatherFinderUseCase } from "../domain";
 
 @injectable()
 export class CurrentWeatherFinderUseCase implements ICurrentWeatherFinderUseCase {
@@ -15,7 +15,7 @@ export class CurrentWeatherFinderUseCase implements ICurrentWeatherFinderUseCase
     private readonly currentWeatherMapper: CurrentWeatherMapper
   ) {}
 
-  async find(city: string) {
+  async find(city: string): Promise<CurrentWeatherEntity> {
     if (!city) {
       const response = await this.locationFinderService.find();
       city = response.data.city;

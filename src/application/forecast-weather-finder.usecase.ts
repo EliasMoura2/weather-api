@@ -3,7 +3,7 @@ import { LocationFinderService } from "../infrastructure/services/location-finde
 import { ForecastWeatherFinderService } from "../infrastructure/services/forecast-weather-finder.service";
 import { IForecastWeatherFinderService } from "../domain/services/forecast-weather-finder.service";
 import { ForecastWeatherMapper } from "../domain/mappers/forecast-weather.mapper";
-import { IForecastWeatherFinderUseCase } from "../domain/use-cases/forecast-weather-finder.usecase";
+import { ForecastWeatherEntity, IForecastWeatherFinderUseCase } from "../domain";
 
 @injectable()
 export class ForecastWeatherFinderUseCase implements IForecastWeatherFinderUseCase{
@@ -17,7 +17,7 @@ export class ForecastWeatherFinderUseCase implements IForecastWeatherFinderUseCa
   )
   {}
 
-  async find(city: string) {
+  async find(city: string): Promise<ForecastWeatherEntity> {
     if (!city) {
       const response = await this.locationFinderService.find();
       city = response.data.city;
