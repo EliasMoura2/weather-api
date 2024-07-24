@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { CurrentWeatherFinderUseCase } from "../../application/current-weather-finder.usecase";
+import { ICurrentWeatherFinderUseCase } from "../../domain";
 
 @injectable()
 export class CurrentWeathercontroller {
-
   constructor(
-    @inject(CurrentWeatherFinderUseCase) 
-    private readonly currentWeatherFinderUsecase: CurrentWeatherFinderUseCase
+    @inject(CurrentWeatherFinderUseCase)
+    private readonly currentWeatherFinderUsecase: ICurrentWeatherFinderUseCase
   ) {}
 
   find = async (req: Request, res: Response, next: NextFunction) => {
@@ -22,5 +22,5 @@ export class CurrentWeathercontroller {
     } catch (error) {
       next(error);
     }
-  }
+  };
 }

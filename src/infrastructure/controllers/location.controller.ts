@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { LocationFinderUseCase } from "../../application/location-finder.usecase";
-import { ILocationFinderUseCase } from "../../domain/use-cases/location-finder.usecase";
+import { ILocationFinderUseCase } from "../../domain";
 
 @injectable()
 export class LocationFinderController {
