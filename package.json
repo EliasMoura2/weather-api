@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev tsnd --respawn src/index.ts | pino-pretty",
     "build": "rimraf dist/ && tsc",
-    "start": "NODE_ENV=prod run build && node dist/index.js",
+    "start": "NODE_ENV=prod pnpm run build && node dist/index.js",
     "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch --verbose",
     "coverage": "NODE_ENV=test jest --coverage"
