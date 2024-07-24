@@ -10,6 +10,16 @@ describe("Weather Routes", () => {
         .expect(200);
     });
 
+    it("should return an error 404 if city not found", async () => {
+      await request(server)
+        .get("/api/v1/weathers/current?city=notfound")
+        .expect("Content-Type", /json/)
+        .expect(404)
+        .expect({
+          error: "city not found",
+        })
+    })
+
     it("should return an object", async () => {
       const response = await request(server).get("/api/v1/weathers/current");
 
@@ -44,6 +54,16 @@ describe("Weather Routes", () => {
         .expect("Content-Type", /json/)
         .expect(200);
     });
+
+    it("should return an error 404 if city not found", async () => {
+      await request(server)
+        .get("/api/v1/weathers/forecast?city=notfound")
+        .expect("Content-Type", /json/)
+        .expect(404)
+        .expect({
+          error: "city not found",
+        })
+    })
 
     it("should return an object", async () => {
       const response = await request(server).get("/api/v1/weathers/forecast");
