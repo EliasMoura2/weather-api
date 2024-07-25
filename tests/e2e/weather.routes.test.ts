@@ -12,7 +12,7 @@ describe('Weather Routes', () => {
       await request(app).get('/api/v1/weathers/current').expect(200);
     });
 
-    it.skip('should return an error 404 if city not found', async () => {
+    it('should return an error 404 if city not found', async () => {
       await request(app).get('/api/v1/weathers/current?city=notfound').expect(404).expect({
         error: 'city not found',
       });
@@ -50,7 +50,7 @@ describe('Weather Routes', () => {
       await request(app).get('/api/v1/weathers/forecast').expect(200);
     });
 
-    it.skip('should return an error 404 if city not found', async () => {
+    it('should return an error 404 if city not found', async () => {
       await request(app).get('/api/v1/weathers/forecast?city=notfound').expect(404).expect({
         error: 'city not found',
       });
