@@ -1,13 +1,13 @@
-import { Router } from "express";
+import { Router } from 'express';
 import {
   CURRENT_WEATHER_CONTROLLER,
   FORECAST_WEATHER_CONTROLLER,
-} from "../../domain";
-import container from "../../infrastructure/dependencies/container";
+} from '../../domain';
+import container from '../../infrastructure/dependencies/container';
 import {
   CurrentWeatherController,
   ForecastWeatherController,
-} from "../controllers";
+} from '../controllers';
 
 export class WeatherRoutes {
   static get routes(): Router {
@@ -44,7 +44,7 @@ export class WeatherRoutes {
      *                weather:
      *                  $ref: '#/components/schemas/CurrentWeather'
      */
-    router.get("/current", currentWeatherController.find);
+    router.get('/current', currentWeatherController.find);
 
     /**
      * @openapi
@@ -71,7 +71,7 @@ export class WeatherRoutes {
      *                forecastWeather:
      *                  $ref: '#/components/schemas/ForecastWeather'
      */
-    router.get("/forecast", forecastWeatherController.find);
+    router.get('/forecast', forecastWeatherController.find);
 
     return router;
   }

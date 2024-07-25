@@ -1,4 +1,4 @@
-import { container } from "tsyringe";
+import { container } from 'tsyringe';
 import {
   CURRENT_WEATHER_CONTROLLER,
   CURRENT_WEATHER_MAPPER,
@@ -15,22 +15,22 @@ import {
   LOCATION_FINDER_USECASE,
   LOCATION_MAPPER,
   LocationMapper,
-} from "../../domain";
+} from '../../domain';
 import {
   CurrentWeatherController,
   ForecastWeatherController,
   LocationFinderController,
-} from "../controllers";
+} from '../controllers';
 import {
   CurrentWeatherService,
   ForecastWeatherService,
   LocationFinderService,
-} from "../services";
+} from '../services';
 import {
   CurrentWeatherUseCase,
   ForecastWeatherUseCase,
   LocationFinderUseCase,
-} from "../../application";
+} from '../../application';
 
 container.register(LOCATION_FINDER_CONTROLLER, {
   useClass: LocationFinderController,

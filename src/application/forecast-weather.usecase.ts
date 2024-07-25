@@ -1,4 +1,4 @@
-import { inject, injectable } from "tsyringe";
+import { inject, injectable } from 'tsyringe';
 import {
   FORECAST_WEATHER_MAPPER,
   FORECAST_WEATHER_SERVICE,
@@ -8,7 +8,7 @@ import {
   IForecastWeatherUseCase,
   ILocationFinderService,
   LOCATION_FINDER_SERVICE,
-} from "../domain";
+} from '../domain';
 
 @injectable()
 export class ForecastWeatherUseCase implements IForecastWeatherUseCase {

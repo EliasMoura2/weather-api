@@ -1,6 +1,7 @@
-import { injectable } from "tsyringe";
-import { CurrentWeatherEntity } from "../entities/current-weather.entity";
-import { BadRequestError } from "../errors";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { injectable } from 'tsyringe';
+import { CurrentWeatherEntity } from '../entities/current-weather.entity';
+import { BadRequestError } from '../errors';
 
 
 @injectable()
@@ -16,23 +17,23 @@ export class CurrentWeatherMapper {
 
     const { speed } = wind;
 
-    if (!country) throw new BadRequestError("Missing country code");
+    if (!country) throw new BadRequestError('Missing country code');
 
-    if (!description) throw new BadRequestError("Missing description");
+    if (!description) throw new BadRequestError('Missing description');
 
-    if (!humidity) throw new BadRequestError("Missing humidity");
+    if (!humidity) throw new BadRequestError('Missing humidity');
 
-    if (!name) throw new BadRequestError("Missing city name");
+    if (!name) throw new BadRequestError('Missing city name');
 
-    if (!pressure) throw new BadRequestError("Missing pressure");
+    if (!pressure) throw new BadRequestError('Missing pressure');
 
-    if (!temp) throw new BadRequestError("Missing temperature");
+    if (!temp) throw new BadRequestError('Missing temperature');
 
-    if (!temp_max) throw new BadRequestError("Missing min temperature");
+    if (!temp_max) throw new BadRequestError('Missing min temperature');
 
-    if (!temp_min) throw new BadRequestError("Missing max temperature");
+    if (!temp_min) throw new BadRequestError('Missing max temperature');
 
-    if (!speed) throw new BadRequestError("Missing wind speed");
+    if (!speed) throw new BadRequestError('Missing wind speed');
 
     return new CurrentWeatherEntity({
       city: name,

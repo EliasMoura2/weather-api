@@ -1,159 +1,159 @@
-import swaggerJsdoc from "swagger-jsdoc";
-import path from "path";
+import swaggerJsdoc from 'swagger-jsdoc';
+import path from 'path';
 
 const swaggerDefinition = {
-  openapi: "3.1.0",
+  openapi: '3.1.0',
   info: {
-    description: "Weather Manager API documentation",
-    title: "Weather API",
-    version: "1.0.0",
+    description: 'Weather Manager API documentation',
+    title: 'Weather API',
+    version: '1.0.0',
   },
   servers: [
     {
-      url: "http://localhost:3000/api/v1",
+      url: 'http://localhost:3000/api/v1',
     },
     {
-      url: "http://localhost:4000/api/v1",
+      url: 'http://localhost:4000/api/v1',
     },
   ],
   tags: [
     {
-      name: "location",
-      description: "Operations about locations",
+      name: 'location',
+      description: 'Operations about locations',
     },
     {
-      name: "weather",
-      description: "Operations about weather",
+      name: 'weather',
+      description: 'Operations about weather',
     },
   ],
   components: {
     schemas: {
       Location: {
-        type: "object",
+        type: 'object',
         properties: {
           city: { 
-            type: "string",
-            example: "New York"
+            type: 'string',
+            example: 'New York'
           },
           country: {
-            type: "string",
-            example: "United States"
+            type: 'string',
+            example: 'United States'
           },
           countryCode: {
-            type: "string",
-            example: "US"
+            type: 'string',
+            example: 'US'
           },
           lat: {
-            type: "number",
+            type: 'number',
             example: 40.7128
           },
           lon: {
-            type: "number",
+            type: 'number',
             example: -74.0060
           },
           state: {
-            type: "string",
-            example: "New York"
+            type: 'string',
+            example: 'New York'
           },
           zip: {
-            type: "string",
-            example: "10001"
+            type: 'string',
+            example: '10001'
           },
         },
       },
       CurrentWeather: {
-        type: "object",
+        type: 'object',
         properties: {
           city: { 
-            type: "string",
-            example: "New York"
+            type: 'string',
+            example: 'New York'
           },
           countryCode: { 
-            type: "string",
-            example: "US"
+            type: 'string',
+            example: 'US'
           },
           description: { 
-            type: "string",
-            example: "overcast clouds"
+            type: 'string',
+            example: 'overcast clouds'
           },
-          "humidity": { 
-            type: "number",
+          'humidity': { 
+            type: 'number',
             example: 77
           },
-          "pressure": { 
-            type: "number",
+          'pressure': { 
+            type: 'number',
             example: 1018
           },
-          "temperature": { 
-            type: "number",
+          'temperature': { 
+            type: 'number',
             example: 18.5
           },
-          "tempMax": {
-            type: "number",
+          'tempMax': {
+            type: 'number',
             example: 18.5
           },
-          "tempMin": {
-            type: "number",
+          'tempMin': {
+            type: 'number',
             example: 18.5
           },
-          "windSpeed": { 
-            type: "number",
+          'windSpeed': { 
+            type: 'number',
             example: 2.52
           },
         },
       },
       ForecastWeather: {
-        type: "object",
+        type: 'object',
         properties: {
           city: {
-            type: "string",
-            example: "New York"
+            type: 'string',
+            example: 'New York'
           },
           countryCode: {
-            type: "string",
-            example: "US"
+            type: 'string',
+            example: 'US'
           },
           weathers: {
-            type: "array",
+            type: 'array',
             items: {
-              $ref: "#/components/schemas/Weather"
+              $ref: '#/components/schemas/Weather'
             },
           },
         },
       },
       Weather: {
-        type: "object",
+        type: 'object',
         properties: {
           date: {
-            type: "string",
-            example: "2021-01-01 12:00:00"
+            type: 'string',
+            example: '2021-01-01 12:00:00'
           },
           description: {
-            type: "string",
-            example: "overcast clouds"
+            type: 'string',
+            example: 'overcast clouds'
           },
           humidity: {
-            type: "number",
+            type: 'number',
             example: 77
           },
           pressure: {
-            type: "number",
+            type: 'number',
             example: 1018
           },
           temperature: {
-            type: "number",
+            type: 'number',
             example: 18.4,
           },
           tempMax: {
-            type: "number",
+            type: 'number',
             example: 18.5
           },
           tempMin: {
-            type: "number",
+            type: 'number',
             example: 18.5
           },
           windSpeed: {
-            type: "number",
+            type: 'number',
             example: 2.52
           },
         },
@@ -167,9 +167,9 @@ const options = {
   apis: [
     `${path
       .join(__dirname)
-      .split("/")
+      .split('/')
       .slice(0, -1)
-      .join("/")}/**/**/*.route.{ts,js}`,
+      .join('/')}/**/**/*.route.{ts,js}`,
   ],
 };
 

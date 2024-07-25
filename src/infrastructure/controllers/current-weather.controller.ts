@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response } from "express";
-import { inject, injectable } from "tsyringe";
+import { NextFunction, Request, Response } from 'express';
+import { inject, injectable } from 'tsyringe';
 import {
   CURRENT_WEATHER_USECASE,
   ICurrentWeatherUseCase,
   StatusCodes,
-} from "../../domain";
+} from '../../domain';
 
 @injectable()
 export class CurrentWeatherController {
@@ -15,12 +15,12 @@ export class CurrentWeatherController {
 
   find = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      req.log.info("Getting current weather");
+      req.log.info('Getting current weather');
       const city = req.query.city as string;
 
       const weather = await this.currentWeatherFinderUsecase.find(city);
 
-      req.log.debug({ weather }, "Current weather found");
+      req.log.debug({ weather }, 'Current weather found');
       return res.status(StatusCodes.OK).json({ weather });
     } catch (error) {
       next(error);

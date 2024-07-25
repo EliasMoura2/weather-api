@@ -1,13 +1,13 @@
-import { NextFunction, Request, Response } from "express";
-import { CustomError } from "../../domain/errors";
-import { AxiosError } from "axios";
-import { ReasonPhrases, StatusCodes } from "../../domain";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Request, Response } from 'express';
+import { CustomError } from '../../domain/errors';
+import { AxiosError } from 'axios';
+import { ReasonPhrases, StatusCodes } from '../../domain';
 
 export const errorHandler = (
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction
 ) => {
   if (err instanceof CustomError) {
     req.log.error(err);

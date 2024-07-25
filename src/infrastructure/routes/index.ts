@@ -1,2 +1,2 @@
-export * from "./location.route"
-export * from "./weather.route"
+export * from './location.route'
+export * from './weather.route'

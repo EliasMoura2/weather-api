@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 export class HttpClientAdapter {
 
   static async get(url: string, options?: AxiosRequestConfig): Promise<AxiosResponse> {

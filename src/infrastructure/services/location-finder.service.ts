@@ -1,6 +1,6 @@
-import { injectable } from "tsyringe";
-import { HttpClientAdapter } from "../adapters";
-import { ILocationFinderService } from "../../domain";
+import { injectable } from 'tsyringe';
+import { HttpClientAdapter } from '../adapters';
+import { ILocationFinderService } from '../../domain';
 
 @injectable()
 export class LocationFinderService implements ILocationFinderService {

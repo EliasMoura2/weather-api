@@ -1,6 +1,7 @@
-import { injectable } from "tsyringe";
-import { BadRequestError } from "../errors";
-import { ForecastWeatherEntity } from "../entities/forecast-weather.entity";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { injectable } from 'tsyringe';
+import { BadRequestError } from '../errors';
+import { ForecastWeatherEntity } from '../entities/forecast-weather.entity';
 
 
 @injectable()
@@ -10,11 +11,11 @@ export class ForecastWeatherMapper {
 
     const { name, country } = city;
 
-    if (!country) throw new BadRequestError("Missing country code");
+    if (!country) throw new BadRequestError('Missing country code');
 
-    if (!list.length) throw new BadRequestError("Missing description");
+    if (!list.length) throw new BadRequestError('Missing description');
 
-    if (!name) throw new BadRequestError("Missing city name");
+    if (!name) throw new BadRequestError('Missing city name');
 
     const weathers = this.mapWeathers(list);
 

@@ -1,4 +1,4 @@
-import { inject, injectable } from "tsyringe";
+import { inject, injectable } from 'tsyringe';
 import {
   ILocationFinderService,
   ILocationFinderUseCase,
@@ -6,7 +6,7 @@ import {
   LOCATION_MAPPER,
   LocationEntity,
   LocationMapper,
-} from "../domain";
+} from '../domain';
 
 @injectable()
 export class LocationFinderUseCase implements ILocationFinderUseCase {

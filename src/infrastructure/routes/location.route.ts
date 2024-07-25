@@ -1,7 +1,7 @@
-import { Router } from "express";
-import { LOCATION_FINDER_CONTROLLER } from "../../domain";
-import { LocationFinderController } from "../controllers";
-import container from "../../infrastructure/dependencies/container";
+import { Router } from 'express';
+import { LOCATION_FINDER_CONTROLLER } from '../../domain';
+import { LocationFinderController } from '../controllers';
+import container from '../../infrastructure/dependencies/container';
 
 export class LocationRoutes {
   static get routes(): Router {
@@ -29,7 +29,7 @@ export class LocationRoutes {
      *                location:
      *                  $ref: '#/components/schemas/Location'
      */
-    router.get("/", locationFinderController.find);
+    router.get('/', locationFinderController.find);
 
     return router;
   }
