@@ -1,8 +1,13 @@
 import request from 'supertest';
 import app from '../../src/app';
+import server from '../../src/index';
 
 describe('Location Routes', () => {
   describe('GET /api/v1/location', () => {
+    afterEach(() => {
+      server.close();
+    });
+
     it('should return statusCode 200', async () => {
       await request(app).get('/api/v1/location').expect(200);
     });
