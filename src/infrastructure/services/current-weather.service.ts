@@ -11,11 +11,6 @@ export class CurrentWeatherService implements ICurrentWeatherService {
 
     const url = `${baseUrl}?q=${city}&appid=${appId}&units=metric`;
 
-    return HttpClientAdapter.get(url, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      timeout: 5000,
-    });
+    return HttpClientAdapter.get(url);
   }
 }

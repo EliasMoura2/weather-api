@@ -9,8 +9,8 @@
     "start": "NODE_ENV=prod pnpm run build && node dist/index.js",
     "lint": "eslint .",
     "fix": "eslint --fix",
-    "test": "jest --silent --verbose",
-    "test:watch": "NODE_ENV=test jest --watch --verbose",
+    "test": "NODE_ENV=test jest --silent",
+    "test:watch": "NODE_ENV=test jest --watch",
     "coverage": "NODE_ENV=test jest --coverage",
     "prepare": "husky",
     "format": "prettier --write './src/**'"

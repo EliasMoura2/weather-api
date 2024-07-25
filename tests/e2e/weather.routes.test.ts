@@ -1,14 +1,14 @@
 import request from 'supertest';
-import server from '../../src/server';
+import app from '../../src/app';
 
 describe('Weather Routes', () => {
   describe.skip('GET /api/v1/weather/current', () => {
     it('should return statusCode 200', async () => {
-      await request(server).get('/api/v1/weathers/current').expect(200);
+      await request(app).get('/api/v1/weathers/current').expect(200);
     });
 
     it('should return an error 404 if city not found', async () => {
-      await request(server)
+      await request(app)
         .get('/api/v1/weathers/current?city=notfound')
         .expect('Content-Type', /json/)
         .expect(404)
@@ -18,19 +18,19 @@ describe('Weather Routes', () => {
     });
 
     it('should return an object', async () => {
-      const response = await request(server).get('/api/v1/weathers/current');
+      const response = await request(app).get('/api/v1/weathers/current');
 
       expect(response.body.weather).toBeInstanceOf(Object);
     });
 
     it('should return the current weather', async () => {
-      const response = await request(server).get('/api/v1/weathers/current');
+      const response = await request(app).get('/api/v1/weathers/current');
 
       expect(response.body).toHaveProperty('weather');
     });
 
     it('should return the current weather with properties', async () => {
-      const response = await request(server).get('/api/v1/weathers/current');
+      const response = await request(app).get('/api/v1/weathers/current');
 
       expect(response.body.weather).toHaveProperty('city');
       expect(response.body.weather).toHaveProperty('countryCode');
@@ -46,11 +46,11 @@ describe('Weather Routes', () => {
 
   describe.skip('GET /api/v1/weather/forecast', () => {
     it('should return statusCode 200', async () => {
-      await request(server).get('/api/v1/weathers/forecast').expect('Content-Type', /json/).expect(200);
+      await request(app).get('/api/v1/weathers/forecast').expect('Content-Type', /json/).expect(200);
     });
 
     it('should return an error 404 if city not found', async () => {
-      await request(server)
+      await request(app)
         .get('/api/v1/weathers/forecast?city=notfound')
         .expect('Content-Type', /json/)
         .expect(404)
@@ -60,19 +60,19 @@ describe('Weather Routes', () => {
     });
 
     it('should return an object', async () => {
-      const response = await request(server).get('/api/v1/weathers/forecast');
+      const response = await request(app).get('/api/v1/weathers/forecast');
 
       expect(response.body.forecastWeather).toBeInstanceOf(Object);
     });
 
     it('should return the forecast weather', async () => {
-      const response = await request(server).get('/api/v1/weathers/forecast');
+      const response = await request(app).get('/api/v1/weathers/forecast');
 
       expect(response.body).toHaveProperty('forecastWeather');
     });
 
     it('should return the forecast weather with properties', async () => {
-      const response = await request(server).get('/api/v1/weathers/forecast');
+      const response = await request(app).get('/api/v1/weathers/forecast');
 
       expect(response.body.forecastWeather).toHaveProperty('city');
       expect(response.body.forecastWeather).toHaveProperty('countryCode');
