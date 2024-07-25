@@ -1,36 +1,36 @@
-import { ILocationFinderService } from "../../../src/domain/services/location-finder.service";
-import { IForecastWeatherFinderUseCase } from "../../../src/domain/use-cases/forecast-weather-finder.usecase";
-import { ForecastWeatherFinderUseCase } from "../../../src/application/forecast-weather-finder.usecase";
-import { IForecastWeatherFinderService } from "../../../src/domain/services/forecast-weather-finder.service";
-import { ForecastWeatherMapper } from "../../../src/domain/mappers/forecast-weather.mapper";
+import { IForecastWeatherUseCase } from '../../../src/domain/use-cases/forecast-weather.usecase';
+import { ILocationFinderService } from '../../../src/domain/services/location-finder.service';
+import { IForecastWeatherService } from '../../../src/domain/services/forecast-weather.service';
+import { ForecastWeatherMapper } from '../../../src/domain/mappers/forecast-weather.mapper';
+import { ForecastWeatherUseCase } from '../../../src/application/forecast-weather.usecase';
 
-describe("Current Weather UseCase", () => {
-  let forecastWeatherFinderUseCase: IForecastWeatherFinderUseCase;
+describe('Current Weather UseCase', () => {
+  let forecastWeatherFinderUseCase: IForecastWeatherUseCase;
   let locationFinderService: ILocationFinderService;
-  let forecastWeatherFinderService: IForecastWeatherFinderService;
+  let forecastWeatherFinderService: IForecastWeatherService;
   let forecastWeatherMapper: ForecastWeatherMapper;
 
   beforeEach(() => {
     locationFinderService = {} as ILocationFinderService;
-    forecastWeatherFinderService = {} as IForecastWeatherFinderService;
+    forecastWeatherFinderService = {} as IForecastWeatherService;
     forecastWeatherMapper = new ForecastWeatherMapper();
-    forecastWeatherFinderUseCase = new ForecastWeatherFinderUseCase(
+    forecastWeatherFinderUseCase = new ForecastWeatherUseCase(
       locationFinderService,
       forecastWeatherFinderService,
-      forecastWeatherMapper
+      forecastWeatherMapper,
     );
   });
 
-  it("should find a location", async () => {
+  it('should find a location', async () => {
     // Arrange
-    const city = "";
+    const city = '';
 
     const location = {
-      city: "Montreal",
+      city: 'Montreal',
     };
 
     const forecastWeatherMock = {
-      cod: "200",
+      cod: '200',
       message: 0,
       cnt: 40,
       list: [
@@ -50,9 +50,9 @@ describe("Current Weather UseCase", () => {
           weather: [
             {
               id: 803,
-              main: "Clouds",
-              description: "broken clouds",
-              icon: "04d",
+              main: 'Clouds',
+              description: 'broken clouds',
+              icon: '04d',
             },
           ],
           clouds: {
@@ -66,9 +66,9 @@ describe("Current Weather UseCase", () => {
           visibility: 10000,
           pop: 0,
           sys: {
-            pod: "d",
+            pod: 'd',
           },
-          dt_txt: "2024-07-24 15:00:00",
+          dt_txt: '2024-07-24 15:00:00',
         },
         {
           dt: 1721844000,
@@ -86,9 +86,9 @@ describe("Current Weather UseCase", () => {
           weather: [
             {
               id: 500,
-              main: "Rain",
-              description: "light rain",
-              icon: "10d",
+              main: 'Rain',
+              description: 'light rain',
+              icon: '10d',
             },
           ],
           clouds: {
@@ -102,22 +102,22 @@ describe("Current Weather UseCase", () => {
           visibility: 10000,
           pop: 0.37,
           rain: {
-            "3h": 0.46,
+            '3h': 0.46,
           },
           sys: {
-            pod: "d",
+            pod: 'd',
           },
-          dt_txt: "2024-07-24 18:00:00",
+          dt_txt: '2024-07-24 18:00:00',
         },
       ],
       city: {
         id: 6077243,
-        name: "Montreal",
+        name: 'Montreal',
         coord: {
           lat: 45.5088,
           lon: -73.5878,
         },
-        country: "CA",
+        country: 'CA',
         population: 3268513,
         timezone: -14400,
         sunrise: 1721813377,
@@ -125,21 +125,19 @@ describe("Current Weather UseCase", () => {
       },
     };
 
-    locationFinderService.find = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve({ data: location }));
+    locationFinderService.find = jest.fn().mockImplementation(() => Promise.resolve({ data: location }));
 
     forecastWeatherFinderService.find = jest
       .fn()
       .mockImplementation(() => Promise.resolve({ data: forecastWeatherMock }));
 
     const forecastWeatherExpected = {
-      city: "Montreal",
-      countryCode: "CA",
+      city: 'Montreal',
+      countryCode: 'CA',
       weathers: [
         {
-          date: "2024-07-24 15:00:00",
-          description: "broken clouds",
+          date: '2024-07-24 15:00:00',
+          description: 'broken clouds',
           humidity: 75,
           pressure: 1019,
           temperature: 23.27,
@@ -148,8 +146,8 @@ describe("Current Weather UseCase", () => {
           windSpeed: 3.52,
         },
         {
-          date: "2024-07-24 18:00:00",
-          description: "light rain",
+          date: '2024-07-24 18:00:00',
+          description: 'light rain',
           humidity: 68,
           pressure: 1018,
           temperature: 24.72,

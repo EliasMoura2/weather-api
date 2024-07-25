@@ -31,74 +31,74 @@ const swaggerDefinition = {
       Location: {
         type: 'object',
         properties: {
-          city: { 
+          city: {
             type: 'string',
-            example: 'New York'
+            example: 'New York',
           },
           country: {
             type: 'string',
-            example: 'United States'
+            example: 'United States',
           },
           countryCode: {
             type: 'string',
-            example: 'US'
+            example: 'US',
           },
           lat: {
             type: 'number',
-            example: 40.7128
+            example: 40.7128,
           },
           lon: {
             type: 'number',
-            example: -74.0060
+            example: -74.006,
           },
           state: {
             type: 'string',
-            example: 'New York'
+            example: 'New York',
           },
           zip: {
             type: 'string',
-            example: '10001'
+            example: '10001',
           },
         },
       },
       CurrentWeather: {
         type: 'object',
         properties: {
-          city: { 
+          city: {
             type: 'string',
-            example: 'New York'
+            example: 'New York',
           },
-          countryCode: { 
+          countryCode: {
             type: 'string',
-            example: 'US'
+            example: 'US',
           },
-          description: { 
+          description: {
             type: 'string',
-            example: 'overcast clouds'
+            example: 'overcast clouds',
           },
-          'humidity': { 
+          humidity: {
             type: 'number',
-            example: 77
+            example: 77,
           },
-          'pressure': { 
+          pressure: {
             type: 'number',
-            example: 1018
+            example: 1018,
           },
-          'temperature': { 
+          temperature: {
             type: 'number',
-            example: 18.5
+            example: 18.5,
           },
-          'tempMax': {
+          tempMax: {
             type: 'number',
-            example: 18.5
+            example: 18.5,
           },
-          'tempMin': {
+          tempMin: {
             type: 'number',
-            example: 18.5
+            example: 18.5,
           },
-          'windSpeed': { 
+          windSpeed: {
             type: 'number',
-            example: 2.52
+            example: 2.52,
           },
         },
       },
@@ -107,16 +107,16 @@ const swaggerDefinition = {
         properties: {
           city: {
             type: 'string',
-            example: 'New York'
+            example: 'New York',
           },
           countryCode: {
             type: 'string',
-            example: 'US'
+            example: 'US',
           },
           weathers: {
             type: 'array',
             items: {
-              $ref: '#/components/schemas/Weather'
+              $ref: '#/components/schemas/Weather',
             },
           },
         },
@@ -126,19 +126,19 @@ const swaggerDefinition = {
         properties: {
           date: {
             type: 'string',
-            example: '2021-01-01 12:00:00'
+            example: '2021-01-01 12:00:00',
           },
           description: {
             type: 'string',
-            example: 'overcast clouds'
+            example: 'overcast clouds',
           },
           humidity: {
             type: 'number',
-            example: 77
+            example: 77,
           },
           pressure: {
             type: 'number',
-            example: 1018
+            example: 1018,
           },
           temperature: {
             type: 'number',
@@ -146,15 +146,15 @@ const swaggerDefinition = {
           },
           tempMax: {
             type: 'number',
-            example: 18.5
+            example: 18.5,
           },
           tempMin: {
             type: 'number',
-            example: 18.5
+            example: 18.5,
           },
           windSpeed: {
             type: 'number',
-            example: 2.52
+            example: 2.52,
           },
         },
       },
@@ -164,13 +164,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: [
-    `${path
-      .join(__dirname)
-      .split('/')
-      .slice(0, -1)
-      .join('/')}/**/**/*.route.{ts,js}`,
-  ],
+  apis: [`${path.join(__dirname).split('/').slice(0, -1).join('/')}/**/**/*.route.{ts,js}`],
 };
 
 const OpenApiConfig = swaggerJsdoc(options);

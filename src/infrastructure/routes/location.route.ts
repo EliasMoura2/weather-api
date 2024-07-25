@@ -7,9 +7,7 @@ export class LocationRoutes {
   static get routes(): Router {
     const router = Router();
 
-    const locationFinderController: LocationFinderController = container.resolve(
-      LOCATION_FINDER_CONTROLLER
-    );
+    const locationFinderController: LocationFinderController = container.resolve(LOCATION_FINDER_CONTROLLER);
 
     /**
      * @openapi

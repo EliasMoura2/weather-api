@@ -18,7 +18,7 @@ export class ForecastWeatherUseCase implements IForecastWeatherUseCase {
     @inject(FORECAST_WEATHER_SERVICE)
     private readonly forecastWeatherFinderService: IForecastWeatherService,
     @inject(FORECAST_WEATHER_MAPPER)
-    private readonly forecastWeatherMapper: ForecastWeatherMapper
+    private readonly forecastWeatherMapper: ForecastWeatherMapper,
   ) {}
 
   async find(city: string): Promise<ForecastWeatherEntity> {

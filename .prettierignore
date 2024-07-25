@@ -1,8 +1,8 @@
-build
-dist
-node_modules
+build/
+dist/
+node_modules/
 logs
-coverage
+coverage/
 .husky
 .nyc_output
 .vscode

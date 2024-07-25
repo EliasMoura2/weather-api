@@ -3,7 +3,6 @@ import { injectable } from 'tsyringe';
 import { BadRequestError } from '../errors';
 import { ForecastWeatherEntity } from '../entities/forecast-weather.entity';
 
-
 @injectable()
 export class ForecastWeatherMapper {
   entityFromObject(object: { [key: string]: any }) {
@@ -37,7 +36,7 @@ export class ForecastWeatherMapper {
         tempMax: weather.main.temp_max,
         tempMin: weather.main.temp_min,
         windSpeed: weather.wind.speed,
-      }
-    })
+      };
+    });
   }
 }

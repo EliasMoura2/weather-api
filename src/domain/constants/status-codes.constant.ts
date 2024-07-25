@@ -13,8 +13,8 @@ export const StatusCodes = {
   INTERNAL_SERVER_ERROR: 500,
   BAD_GATEWAY: 502,
   SERVICE_UNAVAILABLE: 503,
-  GATEWAY_TIMEOUT: 504
-}
+  GATEWAY_TIMEOUT: 504,
+};
 
 export const ReasonPhrases = {
   OK: 'OK',
@@ -31,5 +31,5 @@ export const ReasonPhrases = {
   INTERNAL_SERVER_ERROR: 'Internal Server Error',
   BAD_GATEWAY: 'Bad Gateway',
   SERVICE_UNAVAILABLE: 'Service Unavailable',
-  GATEWAY_TIMEOUT: 'Gateway Timeout'
-}
+  GATEWAY_TIMEOUT: 'Gateway Timeout',
+};

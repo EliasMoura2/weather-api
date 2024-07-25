@@ -18,7 +18,7 @@ export class CurrentWeatherUseCase implements ICurrentWeatherUseCase {
     @inject(CURRENT_WEATHER_SERVICE)
     private readonly currentWeatherFinderService: ICurrentWeatherService,
     @inject(CURRENT_WEATHER_MAPPER)
-    private readonly currentWeatherMapper: CurrentWeatherMapper
+    private readonly currentWeatherMapper: CurrentWeatherMapper,
   ) {}
 
   async find(city: string): Promise<CurrentWeatherEntity> {

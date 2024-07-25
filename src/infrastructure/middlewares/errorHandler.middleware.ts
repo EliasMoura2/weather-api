@@ -4,11 +4,7 @@ import { CustomError } from '../../domain/errors';
 import { AxiosError } from 'axios';
 import { ReasonPhrases, StatusCodes } from '../../domain';
 
-export const errorHandler = (
-  err: any,
-  req: Request,
-  res: Response,
-) => {
+export const errorHandler = (err: any, req: Request, res: Response) => {
   if (err instanceof CustomError) {
     req.log.error(err);
 

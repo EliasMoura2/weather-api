@@ -10,6 +10,16 @@ export default [
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
+    ignores: [
+      '**/dist/**/*',
+      '**/build/**/*',
+      '**/node_modules/**/*',
+      '**/coverage/**/*',
+      '**/logs/**/*',
+      '**/config/**/*',
+    ],
+  },
+  {
     rules: {
       eqeqeq: 'error',
       quotes: ['error', 'single'],
@@ -19,7 +29,7 @@ export default [
       'max-params': ['error', 4],
       'no-useless-catch': 'error',
       'no-var': 'error',
-      'no-redeclare': 'error'
-    }
-  }
+      'no-redeclare': 'error',
+    },
+  },
 ];

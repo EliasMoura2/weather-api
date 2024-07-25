@@ -20,9 +20,7 @@ server.use(helmet());
 server.use(compression());
 server.use(pino());
 
-process.env.NODE_ENV !== 'prod'
-  ? server.use(morgan('dev'))
-  : server.use(morgan('tiny'));
+process.env.NODE_ENV !== 'prod' ? server.use(morgan('dev')) : server.use(morgan('tiny'));
 
 // Docs
 server.use('/docs', swaggerUI.serve, swaggerUI.setup(OpenApiConfig));

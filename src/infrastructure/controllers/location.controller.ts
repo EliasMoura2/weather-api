@@ -1,16 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
-import {
-  ILocationFinderUseCase,
-  LOCATION_FINDER_USECASE,
-  StatusCodes,
-} from '../../domain';
+import { ILocationFinderUseCase, LOCATION_FINDER_USECASE, StatusCodes } from '../../domain';
 
 @injectable()
 export class LocationFinderController {
   constructor(
     @inject(LOCATION_FINDER_USECASE)
-    private readonly useCase: ILocationFinderUseCase
+    private readonly useCase: ILocationFinderUseCase,
   ) {}
 
   find = async (req: Request, res: Response, next: NextFunction) => {

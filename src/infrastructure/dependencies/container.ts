@@ -16,21 +16,9 @@ import {
   LOCATION_MAPPER,
   LocationMapper,
 } from '../../domain';
-import {
-  CurrentWeatherController,
-  ForecastWeatherController,
-  LocationFinderController,
-} from '../controllers';
-import {
-  CurrentWeatherService,
-  ForecastWeatherService,
-  LocationFinderService,
-} from '../services';
-import {
-  CurrentWeatherUseCase,
-  ForecastWeatherUseCase,
-  LocationFinderUseCase,
-} from '../../application';
+import { CurrentWeatherController, ForecastWeatherController, LocationFinderController } from '../controllers';
+import { CurrentWeatherService, ForecastWeatherService, LocationFinderService } from '../services';
+import { CurrentWeatherUseCase, ForecastWeatherUseCase, LocationFinderUseCase } from '../../application';
 
 container.register(LOCATION_FINDER_CONTROLLER, {
   useClass: LocationFinderController,
@@ -78,6 +66,6 @@ container.register(FORECAST_WEATHER_SERVICE, {
 
 container.register(FORECAST_WEATHER_MAPPER, {
   useClass: ForecastWeatherMapper,
-})
+});
 
 export default container;

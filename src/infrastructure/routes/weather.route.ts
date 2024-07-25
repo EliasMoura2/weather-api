@@ -1,23 +1,15 @@
 import { Router } from 'express';
-import {
-  CURRENT_WEATHER_CONTROLLER,
-  FORECAST_WEATHER_CONTROLLER,
-} from '../../domain';
+import { CURRENT_WEATHER_CONTROLLER, FORECAST_WEATHER_CONTROLLER } from '../../domain';
 import container from '../../infrastructure/dependencies/container';
-import {
-  CurrentWeatherController,
-  ForecastWeatherController,
-} from '../controllers';
+import { CurrentWeatherController, ForecastWeatherController } from '../controllers';
 
 export class WeatherRoutes {
   static get routes(): Router {
     const router = Router();
 
-    const currentWeatherController: CurrentWeatherController =
-      container.resolve(CURRENT_WEATHER_CONTROLLER);
+    const currentWeatherController: CurrentWeatherController = container.resolve(CURRENT_WEATHER_CONTROLLER);
 
-    const forecastWeatherController: ForecastWeatherController =
-      container.resolve(FORECAST_WEATHER_CONTROLLER);
+    const forecastWeatherController: ForecastWeatherController = container.resolve(FORECAST_WEATHER_CONTROLLER);
 
     /**
      * @openapi

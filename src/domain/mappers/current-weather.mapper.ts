@@ -3,7 +3,6 @@ import { injectable } from 'tsyringe';
 import { CurrentWeatherEntity } from '../entities/current-weather.entity';
 import { BadRequestError } from '../errors';
 
-
 @injectable()
 export class CurrentWeatherMapper {
   entityFromObject(object: { [key: string]: any }) {

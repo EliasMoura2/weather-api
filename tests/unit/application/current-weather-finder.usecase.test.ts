@@ -1,32 +1,31 @@
-import { ILocationFinderService } from "../../../src/domain/services/location-finder.service";
-import { CurrentWeatherFinderUseCase } from "../../../src/application/current-weather-finder.usecase";
-import { ICurrentWeatherFinderUseCase } from "../../../src/domain/use-cases/current-weather-finder.usecase";
-import { ICurrentWeatherFinderService } from "../../../src/domain/services/current-weather-finder.service";
-import { CurrentWeatherMapper } from "../../../src/domain/mappers/current-weather.mapper";
+import { ICurrentWeatherService } from '../../../src/domain/services/current-weather.service';
+import { ILocationFinderService } from '../../../src/domain/services/location-finder.service';
+import { CurrentWeatherMapper } from '../../../src/domain/mappers/current-weather.mapper';
+import { CurrentWeatherUseCase } from '../../../src/application/current-weather.usecase';
 
-describe("Current Weather UseCase", () => {
-  let currentWeatherFinderUseCase: ICurrentWeatherFinderUseCase;
+describe('Current Weather UseCase', () => {
+  let currentWeatherFinderUseCase: ICurrentWeatherService;
   let locationFinderService: ILocationFinderService;
-  let currentWeatherFinderService: ICurrentWeatherFinderService;
+  let currentWeatherFinderService: ICurrentWeatherService;
   let currentWeatherMapper: CurrentWeatherMapper;
 
   beforeEach(() => {
     locationFinderService = {} as ILocationFinderService;
-    currentWeatherFinderService = {} as ICurrentWeatherFinderService;
+    currentWeatherFinderService = {} as ICurrentWeatherService;
     currentWeatherMapper = new CurrentWeatherMapper();
-    currentWeatherFinderUseCase = new CurrentWeatherFinderUseCase(
+    currentWeatherFinderUseCase = new CurrentWeatherUseCase(
       locationFinderService,
       currentWeatherFinderService,
-      currentWeatherMapper
+      currentWeatherMapper,
     );
   });
 
-  it("should find a location", async () => {
+  it('should find a location', async () => {
     // Arrange
-    const city = "";
+    const city = '';
 
     const location = {
-      city: "Montreal",
+      city: 'Montreal',
     };
 
     const weather = {
@@ -37,12 +36,12 @@ describe("Current Weather UseCase", () => {
       weather: [
         {
           id: 803,
-          main: "Clouds",
-          description: "broken clouds",
-          icon: "04d",
+          main: 'Clouds',
+          description: 'broken clouds',
+          icon: '04d',
         },
       ],
-      base: "stations",
+      base: 'stations',
       main: {
         temp: 22.43,
         feels_like: 22.71,
@@ -65,28 +64,24 @@ describe("Current Weather UseCase", () => {
       sys: {
         type: 1,
         id: 498,
-        country: "CA",
+        country: 'CA',
         sunrise: 1721813377,
         sunset: 1721867508,
       },
       timezone: -14400,
       id: 6077243,
-      name: "Montreal",
+      name: 'Montreal',
       cod: 200,
     };
 
-    locationFinderService.find = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve({ data: location }));
+    locationFinderService.find = jest.fn().mockImplementation(() => Promise.resolve({ data: location }));
 
-    currentWeatherFinderService.find = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve({ data: weather }));
+    currentWeatherFinderService.find = jest.fn().mockImplementation(() => Promise.resolve({ data: weather }));
 
     const currentWeatherExpected = {
-      city: "Montreal",
-      countryCode: "CA",
-      description: "broken clouds",
+      city: 'Montreal',
+      countryCode: 'CA',
+      description: 'broken clouds',
       humidity: 76,
       pressure: 1020,
       temperature: 22.43,

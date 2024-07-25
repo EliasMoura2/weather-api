@@ -14,7 +14,7 @@ export class LocationFinderUseCase implements ILocationFinderUseCase {
     @inject(LOCATION_FINDER_SERVICE)
     private readonly locationFinderService: ILocationFinderService,
     @inject(LOCATION_MAPPER)
-    private readonly locationMapper: LocationMapper
+    private readonly locationMapper: LocationMapper,
   ) {}
 
   async find(): Promise<LocationEntity> {

@@ -1,7 +1,0 @@
-dist/
-build/
-.vscode/
-node_modules/
-coverage/
-config/
-logs/
