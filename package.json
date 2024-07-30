@@ -10,7 +10,6 @@
     "lint": "eslint .",
     "fix": "eslint --fix",
     "test": "NODE_ENV=test jest --silent --verbose",
-    "testing": "NODE_ENV=test jest --findRelatedTests --passWithNoTests",
     "test:watch": "NODE_ENV=test jest --watch",
     "coverage": "NODE_ENV=test jest --coverage",
     "prepare": "husky",
@@ -70,7 +69,8 @@
   "lint-staged": {
     "*{.ts,.js}": [
       "pnpm fix",
-      "pnpm run format"
+      "pnpm run format",
+      "NODE_ENV=test jest --findRelatedTests --passWithNoTests"
     ]
   }
 }
