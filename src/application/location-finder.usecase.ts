@@ -18,8 +18,8 @@ export class LocationFinderUseCase implements ILocationFinderUseCase {
   ) {}
 
   async find(): Promise<LocationEntity> {
-    const { data } = await this.locationFinderService.find();
+    const response = await this.locationFinderService.find();
 
-    return this.locationMapper.entityfromObject(data);
+    return this.locationMapper.entityfromObject(response.data);
   }
 }
